@@ -1,17 +1,17 @@
 def operacionesMath(operacion, num_1, num_2):
-    if(operacion == "suma"):
+    if operacion == "suma":
         resultado = num_1 + num_2
-    if(operacion == "resta"):
+    if operacion == "resta":
         resultado = num_1 - num_2
-    if (operacion == "multiplicacion"):
+    if operacion == "multiplicacion":
         resultado = num_1 * num_2
-    if (operacion == "division"):
+    if operacion == "division":
         resultado = num_1 / num_2
 
     return resultado
 
 op = "suma"
-print(operacionesMath(op, 4,5))
+print(operacionesMath(op, 4, 5))
 
 op = "resta"
 print(operacionesMath(op, 5, 8))
