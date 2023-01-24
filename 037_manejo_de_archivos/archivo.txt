@@ -1,0 +1,2 @@
+Estupendo dia para estudiar py 
+ hoy es miercolesEstamos estudiando py el objetivo es comprender django y fastApi
