@@ -6,15 +6,40 @@ mi_frame = Frame(formulario)
 
 mi_frame.pack()
 
+operacion = ""
+resultado = 0
+
 #---------------pantalla------------
 numeroPantalla=StringVar()
 pantalla = Entry(mi_frame, textvariable=numeroPantalla)
+lbl_resultado = Label(mi_frame, text=resultado).grid(row=6, column=1, columnspan=4, padx=10, pady=10)
 pantalla.grid(row=1, column=1, padx=10, pady=10, columnspan=4)
 pantalla.config(background="black", fg="#03f943", justify="right")
 
 #pulsaciones teclado
 def numeroPulsado(numero):
-    numeroPantalla.set(numeroPantalla.get() + numero)
+    global operacion
+
+    if operacion != "":
+        numeroPantalla.set(numero)
+        operacion = ""
+    else:
+        numeroPantalla.set(numeroPantalla.get() + numero)
+
+def suma(num):
+    global operacion
+    global resultado
+
+    resultado+=int(num)
+    operacion = "suma"
+
+    numeroPantalla.set(resultado)
+
+def elResultado():
+    global resultado
+
+    numeroPantalla.set(resultado + int(numeroPantalla.get()))
+    resultado = 0
 
 #----------------fila 1-------------
 boton_7 = Button(mi_frame, text="7", width=3, command=lambda:numeroPulsado("7"))
@@ -75,10 +100,13 @@ boton_0.grid(row=5, column=1, padx=10, pady=10)
 boton_coma = Button(mi_frame, text=",", width=3, command=lambda:numeroPulsado("."))
 boton_coma.grid(row=5, column=2, padx=10, pady=10)
 
-boton_igual = Button(mi_frame, text="=", width=3)
+boton_igual = Button(mi_frame, text="=", width=3, command=lambda:elResultado())
 boton_igual.grid(row=5, column=3, padx=10, pady=10)
 
-boton_suma = Button(mi_frame, text="+", width=3)
+boton_suma = Button(mi_frame, text="+", width=3, command=lambda:suma(numeroPantalla.get()))
 boton_suma.grid(row=5, column=4, padx=10, pady=10)
+
+#--------------------------fila 6 --------------------
+
 
 formulario.mainloop()
