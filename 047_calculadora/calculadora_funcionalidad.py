@@ -35,10 +35,24 @@ def suma(num):
 
     numeroPantalla.set(resultado)
 
-def elResultado():
+def resta(num):
+    global operacion
     global resultado
 
-    numeroPantalla.set(resultado + int(numeroPantalla.get()))
+    resultado-=int(num)
+    operacion = "resta"
+
+    numeroPantalla.set(resultado)
+
+def elResultado():
+    global resultado
+    global operacion
+
+    if operacion=="suma":
+            numeroPantalla.set(resultado + int(numeroPantalla.get()))
+    if operacion=="resta":
+            numeroPantalla.set(resultado - int(numeroPantalla.get()))
+
     resultado = 0
 
 #----------------fila 1-------------
@@ -90,7 +104,7 @@ boton_2.grid(row=4, column=2, padx=10, pady=10)
 boton_3 = Button(mi_frame, text="3", width=3, command=lambda:numeroPulsado("3"))
 boton_3.grid(row=4, column=3, padx=10, pady=10)
 
-boton_restar = Button(mi_frame, text="-", width=3)
+boton_restar = Button(mi_frame, text="-", width=3, command=lambda:resta(numeroPantalla.get()))
 boton_restar.grid(row=4, column=4, padx=10, pady=10)
 
 #----------------fila 5-------------
