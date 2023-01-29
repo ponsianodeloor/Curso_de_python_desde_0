@@ -7,6 +7,14 @@ class Empleado:
     def __str__(self):
         return "{} que trabaja como {} y que tiene un salario de $ {}".format(self.name, self.position, self.salary)
 
+
+def calculoComision(empleado):
+    #se suma un 3% adicional
+    if empleado.salary < 3000:
+        empleado.salary = empleado.salary * 1.03
+
+    return empleado
+
 lista_empleados = [
     Empleado("Ponsiano", "Dev", 1600),
     Empleado("Naun", "Dev", 1100),
@@ -14,7 +22,8 @@ lista_empleados = [
     Empleado("Mireya", "Geo", 1700),
 ]
 
-salarios_altos = filter(lambda empleado: empleado.salario > 1500, lista_empleados)
+#se calcula comision para los que tienen salario alto y bajo
+lista_empleados_comision = map(calculoComision, lista_empleados)
 
-for empleado_salario in salarios_altos:
-    empleado_salario
+for empleado in lista_empleados_comision:
+    print(empleado)
