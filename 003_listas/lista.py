@@ -1,4 +1,15 @@
 elementos = ['Ponsiano', 'Vivi', 'Jhair' , 'Eduardo']
+p1, p2, p3, p4 = elementos
+print(p1)
+
+#asignar el resto de elementos a c usando *
+a, b, *c = elementos
+print(c)
+
+#obviar el primer elemento y obtener el resto al final
+_, b, *c = elementos
+print(c)
+
 print(elementos[:])
 
 print(elementos[-1])
