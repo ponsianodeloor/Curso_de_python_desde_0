@@ -27,3 +27,8 @@ lista_empleados_comision = map(calculoComision, lista_empleados)
 
 for empleado in lista_empleados_comision:
     print(empleado)
+
+
+lista_empleados_comision = [calculoComision(x) for x in lista_empleados]
+for empleado in lista_empleados_comision:
+    print(empleado)
